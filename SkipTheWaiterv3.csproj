@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="coke.jpg" />
+    <None Remove="FirstScreenImg.png" />
+    <None Remove="martini.jpeg" />
+    <None Remove="orangejuice.jpg" />
+    <None Remove="perfect-guinness-header.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="coke.jpg" />
+    <Resource Include="FirstScreenImg.png" />
+    <Resource Include="martini.jpeg" />
+    <Resource Include="orangejuice.jpg" />
+    <Resource Include="perfect-guinness-header.jpg" />
+  </ItemGroup>
+
+</Project>
