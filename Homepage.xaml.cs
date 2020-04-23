@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
 namespace SkipTheWaiterv3
 {
     /// <summary>
@@ -19,97 +18,89 @@ namespace SkipTheWaiterv3
     /// </summary>
     public partial class Homepage : Window
     {
+
+        public bool bobSelected, amySelected = true;
         List<Item> bill = new List<Item>();
         public Homepage()
         {
             InitializeComponent();
         }
 
-
-        private void juiceClick(object sender, RoutedEventArgs e)
+        private void idleScreen_grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            bill.Add(new Item("Orange Juice", 4.99));
-            // Settings to generate a New Label
-              Label item = new Label();
-             item.Content = "Orange juice  4.99";
-             item.Margin = new System.Windows.Thickness(696, 85, 0, 0);
-
-            //printBill(bill);
-            Button cancel = new Button();
-            cancel.Name = "cancel";
-            cancel.Content = "remove";
-            cancel.Background = Brushes.Red;
-            cancel.Width = 45;
-            cancel.Height = 20;
-            cancel.Margin = new System.Windows.Thickness(736, -180, 0, 0);
-
-            Button getBill = new Button();
-            getBill.Content = "Get Bill";
-            getBill.Width = 80;
-            getBill.Height = 25;
-            getBill.Background = Brushes.LightGreen;
-            getBill.Margin = new System.Windows.Thickness(700, 300, 0, 0);
-           
-            grid1.Children.Add(item);
-            grid1.Children.Add(getBill);
-            grid1.Children.Add(cancel);
-
-
+            dimming_grid.Visibility = Visibility.Visible;
+            dimming_grid.IsEnabled = true;
         }
 
-        private void coke_click(object sender, RoutedEventArgs e)
+        private void name_textbox_KeyDown(object sender, KeyEventArgs e)
         {
-            bill.Add(new Item("Coke", 2.99));
-            // Settings to generate a New Label
-           // Label item = new Label();
-            //item.Content = "Coke      2.99";
-           // item.Margin = new System.Windows.Thickness(696, 98, 0, 0);
-
-
-           // grid1.Children.Add(item);
-            
-        }
-
-        private void martini_click(object sender, RoutedEventArgs e)
-        {
-            bill.Add(new Item("Coke", 2.99));
-            // Settings to generate a New Label
-           // Label item = new Label();
-           // item.Content = "Coke      2.99";
-           // item.Margin = new System.Windows.Thickness(696, 118, 0, 0);
-
-
-//            grid1.Children.Add(item);
-
-        }
-
-        private void guniess_click(object sender, RoutedEventArgs e)
-        {
-            bill.Add(new Item("Coke", 2.99));
-            // Settings to generate a New Label
-           // Label item = new Label();
-           // item.Content = "Coke      2.99";
-           // item.Margin = new System.Windows.Thickness(696, 138, 0, 0);
-
-
-            //grid1.Children.Add(item);
-
-        }
-
-        private void printBill(List<Item> items)
-        {
-            int pos = 78;
-            foreach (var item in items)
+            if (e.Key == Key.Enter && name_textbox.Text != null)
             {
-                // Settings to generate a New Label
-                Label lbl = new Label();
-                lbl.Name = "labelID";
-                lbl.Content = $"{item.name}    {item.price}";
-                lbl.Margin = new System.Windows.Thickness(696, pos, 0, 0);
-                grid1.Children.Add(lbl);
-                pos += 20;
+                dimming_grid.Visibility = Visibility.Hidden;
+                dimming_grid.IsEnabled = false;
 
+                idleScreen_grid.Visibility = Visibility.Collapsed;
+                idleScreen_grid.IsEnabled = false;
 
+                layout_grid.Visibility = Visibility.Visible;
+                layout_grid.IsEnabled = true;
+
+                if (name_textbox.Text == "Amy")
+                {
+                    amy_name_button.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void drink_button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            drink_button.Foreground = new SolidColorBrush(Color.FromRgb(87, 87, 87));
+            drink_button.Background = new SolidColorBrush(Color.FromRgb(232, 228, 223));
+
+            appetizer_button.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+            appetizer_button.Background = new SolidColorBrush(Color.FromRgb(182, 169, 169));
+        }
+
+        private void appetizer_button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            appetizer_button.Foreground = new SolidColorBrush(Color.FromRgb(87, 87, 87));
+            appetizer_button.Background = new SolidColorBrush(Color.FromRgb(232, 228, 223));
+
+            drink_button.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
+            drink_button.Background = new SolidColorBrush(Color.FromRgb(182, 169, 169));
+        }
+
+        // Help Button Methods
+        private void help_button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            help_button.Background = new SolidColorBrush(Color.FromRgb(226, 97, 97));
+            help_button.Foreground = new SolidColorBrush(Color.FromRgb(52, 51, 50));
+        }
+
+        private void help_button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            help_button.Background = new SolidColorBrush(Color.FromRgb(52, 51, 50));
+            help_button.Foreground = new SolidColorBrush(Color.FromRgb(232, 228, 223));
+        }
+
+        // Name Button Methods
+        private void add_name_button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dimming_grid.Visibility = Visibility.Visible;
+            dimming_grid.IsEnabled = true;
+        }
+
+        private void bob_name_button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (bobSelected)
+            {
+                bobSelected = false;
+                bob_name_button.BorderBrush = new SolidColorBrush(Color.FromRgb(251, 205, 83));
+            }
+            else 
+            {
+                bobSelected = true;
+                bob_name_button.BorderBrush = Brushes.White;
             }
         }
     }

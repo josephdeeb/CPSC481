@@ -9,17 +9,25 @@
   <ItemGroup>
     <None Remove="coke.jpg" />
     <None Remove="FirstScreenImg.png" />
+    <None Remove="keyboard.png" />
     <None Remove="martini.jpeg" />
     <None Remove="orangejuice.jpg" />
     <None Remove="perfect-guinness-header.jpg" />
+    <None Remove="SkipTheWaiterLOGO.png" />
+    <None Remove="SkipTheWaiterLOGO2.png" />
+    <None Remove="SkipTheWaiterLOGO3.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="coke.jpg" />
     <Resource Include="FirstScreenImg.png" />
+    <Resource Include="keyboard.png" />
     <Resource Include="martini.jpeg" />
     <Resource Include="orangejuice.jpg" />
     <Resource Include="perfect-guinness-header.jpg" />
+    <Resource Include="SkipTheWaiterLOGO.png" />
+    <Resource Include="SkipTheWaiterLOGO2.png" />
+    <Resource Include="SkipTheWaiterLOGO3.png" />
   </ItemGroup>
 
 </Project>

@@ -5,81 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkipTheWaiterv3"
         mc:Ignorable="d"
-        Title="Homepage" Height="450" Width="800" SizeToContent="WidthAndHeight">
-    <Grid x:Name="grid1">
-        <Rectangle HorizontalAlignment="Left" Height="307" Margin="119,79,0,0" Stroke="Black" VerticalAlignment="Top" Width="572" Fill="Black" Opacity="0.1"/>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0,40,0,73" Width="97">
-            <Button Content="Drinks" Height="50"></Button>
-            <Button Content="Appetizers" Height="50"></Button>
-            <Button Content="Soups and Salads" Height="50"></Button>
-            <Button Content="Sandwiches" Height="50"></Button>
-            <Button Content="Entrees" Height="50"></Button>
-            <Button Content="Dessert" Height="50"></Button>
-        </StackPanel>
+        Title="Homepage" Height="768" Width="1024" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ControlTemplate x:Key="helpButtonTemplate" TargetType="Button">
+            <Grid>
+                <Ellipse x:Name="buttonEllipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="6"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="categoryButtonTemplate" TargetType="Button">
+            <Grid>
+                <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" RadiusX="30" RadiusY="30"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="addnameButtonTemplate" TargetType="Button">
+            <Grid>
+                <Ellipse x:Name="buttonEllipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="5"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="nameButtonTemplate" TargetType="Button">
+            <Grid>
+                <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="6" RadiusX="15" RadiusY="15"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="idleScreen_grid" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FF383232" MouseDown="idleScreen_grid_MouseDown">
+            <StackPanel Width="1014" Height="421" >
+                <Image Height="382" Width="484" Source="/SkipTheWaiterLOGO2.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock Text="Tap to Continue" HorizontalAlignment="Center" Foreground="#7AFFFFFF" FontSize="20" FontFamily="Global User Interface"/>
+            </StackPanel>
+        </Grid>
 
-        <Button Content="Call For Help" Margin="0,356,703,48"/>
-        <Frame x:Name="Menu" Margin="102,40,0,48"></Frame>
-        <Image HorizontalAlignment="Left" Height="67" Margin="135,85,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5" Source="/orangejuice.jpg" Stretch="Fill">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.098"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Label Content="Citrus " HorizontalAlignment="Left" Margin="200,124,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <Button x:Name="btnJuice" Content="Add" HorizontalAlignment="Center" Height="30" Margin="0,98,0,0" VerticalAlignment="Top" Click="juiceClick"/>
-        <Label Content="HCI Bistro" HorizontalAlignment="Left" Margin="355,40,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Century Gothic" FontWeight="Bold"/>
-        <Label Content="Orange juice       $4.99" HorizontalAlignment="Left" Margin="200,95,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="btnGuin" Content="Add" HorizontalAlignment="Left" Height="30" Margin="648,0,0,0" VerticalAlignment="Center" Click="guniess_click"/>
+        <Grid x:Name="layout_grid" Visibility="Hidden" Background="#FF383232">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="left_column" Orientation="Vertical" HorizontalAlignment="Center" Width="200" Grid.Row="1" Visibility="Visible">
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="drink_button" Height="80" Margin="10, 0, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Foreground="#FF575757" Background="#FFE8E4DF" MouseDown="drink_button_MouseDown">
+                    <TextBlock Text="Drinks" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="appetizer_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646" MouseDown="appetizer_button_MouseDown" Visibility="Visible">
+                    <TextBlock Text="Appetizers" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="soup_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
+                    <TextBlock Text="Soups &amp; Salads" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="sandwich_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
+                    <TextBlock Text="Sandwiches &amp; Wraps" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="entree_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
+                    <TextBlock Text="Entrees" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="dessert_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
+                    <TextBlock Text="Dessert" Margin="0,0,30,0"/>
+                </Button>
+                <Button Template="{StaticResource helpButtonTemplate}" x:Name="help_button" Content="Help" Height="100" Width="100" Margin="10, 34, 10, 34" FontSize="18" FontWeight="Bold" FontFamily="Segoe Script" Background="#FF343332" Foreground="#FFE8E4DF" BorderBrush="#FFA45C5C" MouseDown="help_button_MouseDown" MouseDoubleClick="help_button_MouseDoubleClick"/>
+            </StackPanel>
+            <Grid x:Name="menu_grid" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1" Background="#FFE8E4DF">
 
-        <Image HorizontalAlignment="Left" Height="64" Margin="444,86,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5" Source="/coke.jpg" Stretch="Fill">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.098"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Label Content="Coke       $2.99" HorizontalAlignment="Left" Margin="503,95,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="btnCola" Content="Add" HorizontalAlignment="Left" Height="30" Margin="648,98,0,0" VerticalAlignment="Top" Click="coke_click"/>
-        <Label Content="Sugar, Cocoa Flavor " HorizontalAlignment="Left" Margin="503,116,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <Label Content="Lemon, Beefeater gin, vermouth" HorizontalAlignment="Left" Margin="200,235,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <Label Content="Martini          $9.99" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Center" FontWeight="Bold"/>
-        <Image HorizontalAlignment="Left" Height="67" Margin="135,203,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5" Source="/martini.jpeg" Stretch="Fill">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.098"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Button x:Name="btnMartini" Content="Add" HorizontalAlignment="Center" Height="30" Margin="0,205,0,0" VerticalAlignment="Top" Click="martini_click"/>
-        <Label Content="Guiness       $8.99" HorizontalAlignment="Left" Margin="503,202,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Citrus " HorizontalAlignment="Left" Margin="513,235,0,0" VerticalAlignment="Top" FontStyle="Italic"/>
-        <Image HorizontalAlignment="Left" Height="67" Margin="451,206,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="0.5,0.5" Source="/perfect-guinness-header.jpg" Stretch="Fill">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.098"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+            </Grid>
+            <Grid x:Name="bill_grid" Margin="10,0,10,10" Grid.Row="1" Grid.Column="2" Background="#FFB6A9A9">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="bill_panel">
 
-        <Rectangle HorizontalAlignment="Center" Height="35" Stroke="Black" VerticalAlignment="Top" Width="800" Fill="#FFD0CECE"/>
-        <Rectangle HorizontalAlignment="Left" Height="346" Margin="696,40,0,0" Stroke="Black" VerticalAlignment="Top" Width="104"/>
-        <Label Content="Bill" HorizontalAlignment="Left" Margin="729,47,0,0" VerticalAlignment="Top"/>
-
-
-
-
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="user_grid" Grid.Row="0" Grid.ColumnSpan="3">
+                <StackPanel x:Name="users_panel" Margin="10, 10, 10, 4" Orientation="Horizontal">
+                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="bob_name_button" Width="100" Content="Bob" Margin="0,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFFBCD53" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="White" MouseDown="bob_name_button_MouseDown"/>
+                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="amy_name_button" Width="100" Content="Amy" Margin="2,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF36E4FF" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Collapsed" BorderBrush="White"/>
+                    <Button Template="{StaticResource addnameButtonTemplate}" x:Name="add_name_button" Width="45" Height="45" Content="+" Margin="2,0,2,0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF8FF156" Foreground="White" FontSize="30" FontWeight="Bold" FontFamily="Global User Interface" MouseDown="add_name_button_MouseDown" BorderBrush="{x:Null}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="dimming_grid" Width="1024" Background="#B2000000" Visibility="Hidden" MouseDown="idleScreen_grid_MouseDown" IsEnabled="False">
+            <TextBlock Text="please enter your name" Margin="0,300,0,0" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Global User Interface"/>
+            <TextBox x:Name="name_textbox" Width="140" Height="30" Margin="442,-35,442,0" FontSize="20" FontFamily="Global User Interface" KeyDown="name_textbox_KeyDown"/>
+            <Image x:Name="keyboard_image" Source="/keyboard.png" VerticalAlignment="Bottom"/>
+        </Grid>
     </Grid>
 </Window>
