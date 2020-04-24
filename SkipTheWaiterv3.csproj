@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="calamari.png" />
     <None Remove="coke.jpg" />
+    <None Remove="coke.png" />
     <None Remove="FirstScreenImg.png" />
+    <None Remove="garlic_bread.jpeg" />
+    <None Remove="guiness.png" />
     <None Remove="keyboard.png" />
     <None Remove="martini.jpeg" />
+    <None Remove="martini.png" />
+    <None Remove="nachos.jpg" />
+    <None Remove="onion_rings.jpg" />
     <None Remove="orangejuice.jpg" />
+    <None Remove="orangejuice.png" />
     <None Remove="perfect-guinness-header.jpg" />
     <None Remove="SkipTheWaiterLOGO.png" />
     <None Remove="SkipTheWaiterLOGO2.png" />
@@ -19,11 +27,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="calamari.png" />
     <Resource Include="coke.jpg" />
+    <Resource Include="coke.png" />
     <Resource Include="FirstScreenImg.png" />
+    <Resource Include="garlic_bread.jpeg" />
+    <Resource Include="guiness.png" />
     <Resource Include="keyboard.png" />
     <Resource Include="martini.jpeg" />
+    <Resource Include="martini.png" />
+    <Resource Include="nachos.jpg" />
+    <Resource Include="onion_rings.jpg" />
     <Resource Include="orangejuice.jpg" />
+    <Resource Include="orangejuice.png" />
     <Resource Include="perfect-guinness-header.jpg" />
     <Resource Include="SkipTheWaiterLOGO.png" />
     <Resource Include="SkipTheWaiterLOGO2.png" />

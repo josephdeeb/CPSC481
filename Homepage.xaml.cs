@@ -56,19 +56,38 @@ namespace SkipTheWaiterv3
         {
             drink_button.Foreground = new SolidColorBrush(Color.FromRgb(87, 87, 87));
             drink_button.Background = new SolidColorBrush(Color.FromRgb(232, 228, 223));
+            drinks_menu_images.Visibility = Visibility.Visible;
+            drinks_menu_names.Visibility = Visibility.Visible;
+            drinks_menu_prices.Visibility = Visibility.Visible;
+            drinks_menu_descriptions.Visibility = Visibility.Visible;
 
             appetizer_button.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
             appetizer_button.Background = new SolidColorBrush(Color.FromRgb(182, 169, 169));
+            appetizers_menu_images.Visibility = Visibility.Hidden;
+            appetizers_menu_names.Visibility = Visibility.Hidden;
+            appetizers_menu_prices.Visibility = Visibility.Hidden;
+            appetizers_menu_descriptions.Visibility = Visibility.Hidden;
         }
 
         private void appetizer_button_MouseDown(object sender, MouseButtonEventArgs e)
         {
             appetizer_button.Foreground = new SolidColorBrush(Color.FromRgb(87, 87, 87));
             appetizer_button.Background = new SolidColorBrush(Color.FromRgb(232, 228, 223));
+            appetizers_menu_images.Visibility = Visibility.Visible;
+            appetizers_menu_names.Visibility = Visibility.Visible;
+            appetizers_menu_prices.Visibility = Visibility.Visible;
+            appetizers_menu_descriptions.Visibility = Visibility.Visible;
+
 
             drink_button.Foreground = new SolidColorBrush(Color.FromRgb(70, 70, 70));
             drink_button.Background = new SolidColorBrush(Color.FromRgb(182, 169, 169));
+            drinks_menu_images.Visibility = Visibility.Hidden;
+            drinks_menu_names.Visibility = Visibility.Hidden;
+            drinks_menu_prices.Visibility = Visibility.Hidden;
+            drinks_menu_descriptions.Visibility = Visibility.Hidden;
         }
+
+       
 
         // Help Button Methods
         private void help_button_MouseDown(object sender, MouseButtonEventArgs e)
