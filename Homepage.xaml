@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:SkipTheWaiterv3"
         mc:Ignorable="d"
         Title="Homepage" Height="768" Width="1024" SizeToContent="WidthAndHeight">
+
     <Window.Resources>
+        <!-- CONTROL TEMPLATES -->
         <ControlTemplate x:Key="helpButtonTemplate" TargetType="Button">
             <Grid>
                 <Ellipse x:Name="buttonEllipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="6"/>
                 <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </ControlTemplate>
+        
         <ControlTemplate x:Key="categoryButtonTemplate" TargetType="Button">
             <Grid>
                 <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" RadiusX="30" RadiusY="30"/>
@@ -25,15 +28,61 @@
                 <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </ControlTemplate>
+        
         <ControlTemplate x:Key="nameButtonTemplate" TargetType="Button">
             <Grid>
                 <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="6" RadiusX="15" RadiusY="15"/>
                 <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </ControlTemplate>
+        
+        <ControlTemplate x:Key="roundButtonTemplate" TargetType="Button">
+            <Grid>
+                <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="6" RadiusX="15" RadiusY="15"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="smallRoundButtonTemplate" TargetType="Button">
+            <Grid>
+                <Rectangle x:Name="buttonRectangle" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="3" RadiusX="10" RadiusY="10"/>
+                <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!-- STYLES -->
+        <Style x:Key="titleStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Global User Interface"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FFE8E4DF"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="20,18,0,0"/>
+        </Style>
+        
+        <Style x:Key="descriptionStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Global User Interface"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#FFE8E4DF"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="30,30,0,0"/>
+        </Style>
+
+        <Style x:Key="priceStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Global User Interface"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0,30,20,0"/>
+        </Style>
     </Window.Resources>
-    <Grid>
-        <Grid x:Name="idleScreen_grid" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FF383232" MouseDown="idleScreen_grid_MouseDown">
+
+    <!-- FRAMING GRID -->
+    <Grid Width="1024" Height="752">
+        <Grid x:Name="idleScreen_grid" Background="#FF383232" MouseDown="idleScreen_grid_MouseDown">
             <StackPanel Width="1014" Height="421" >
                 <Image Height="382" Width="484" Source="/SkipTheWaiterLOGO2.png" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
@@ -46,6 +95,7 @@
             </StackPanel>
         </Grid>
 
+        <!-- MAIN SCREEN -->
         <Grid x:Name="layout_grid" Visibility="Hidden" Background="#FF383232">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -56,11 +106,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
+            
+            <!-- CATEGORIES AND HELP -->
             <StackPanel x:Name="left_column" Orientation="Vertical" HorizontalAlignment="Center" Width="200" Grid.Row="1" Visibility="Visible">
-                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="drink_button" Height="80" Margin="10, 0, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Foreground="#FF575757" Background="#FFE8E4DF" MouseDown="drink_button_MouseDown">
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="drink_button" Height="80" Margin="10, 0, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Foreground="#FF575757" Background="#FFE8E4DF" Click="drink_button_Click">
                     <TextBlock Text="Drinks" Margin="0,0,30,0"/>
                 </Button>
-                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="appetizer_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646" MouseDown="appetizer_button_MouseDown" Visibility="Visible">
+                <Button Template="{StaticResource categoryButtonTemplate}" x:Name="appetizer_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646" Visibility="Visible" Click="appetizer_button_Click">
                     <TextBlock Text="Appetizers" Margin="0,0,30,0"/>
                 </Button>
                 <Button Template="{StaticResource categoryButtonTemplate}" x:Name="soup_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
@@ -75,32 +127,426 @@
                 <Button Template="{StaticResource categoryButtonTemplate}" x:Name="dessert_button" Height="80" Margin="10, 2, -30, 2" FontSize="18" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Background="#FFB6A9A9" Foreground="#FF464646">
                     <TextBlock Text="Dessert" Margin="0,0,30,0"/>
                 </Button>
-                <Button Template="{StaticResource helpButtonTemplate}" x:Name="help_button" Content="Help" Height="100" Width="100" Margin="10, 34, 10, 34" FontSize="18" FontWeight="Bold" FontFamily="Segoe Script" Background="#FF343332" Foreground="#FFE8E4DF" BorderBrush="#FFA45C5C" MouseDown="help_button_MouseDown" MouseDoubleClick="help_button_MouseDoubleClick"/>
+                <Button Template="{StaticResource helpButtonTemplate}" x:Name="help_button" Content="Help" Height="100" Width="100" Margin="10, 34, 0, 34" FontSize="18" FontWeight="Bold" FontFamily="Segoe Script" Background="#FF343332" Foreground="#FFE8E4DF" BorderBrush="#FFA45C5C" Click="help_button_Click" MouseRightButtonDown="help_button_MouseRightButtonDown"/>
             </StackPanel>
+            
+            <!-- CENTRAL MENU -->
             <Grid x:Name="menu_grid" Margin="0,0,0,10" Grid.Row="1" Grid.Column="1" Background="#FFE8E4DF">
-
+                <ScrollViewer x:Name="drinks_viewer" Margin="10" VerticalScrollBarVisibility="Hidden" Visibility="Visible">
+                    <StackPanel>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/perfect-guinness-header.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Bob's Drink"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious BOB made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button x:Name="add_bobsDrink" Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156" Click="add_bobsDrink_Click"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/coke.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Amy's Drink"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious AMY made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button x:Name="add_amysDrink" Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156" Click="add_amysDrink_Click"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Martini"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="A delicious martini made with some ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+                
+                <ScrollViewer x:Name="appetizers_viewer" Margin="10" VerticalScrollBarVisibility="Disabled" Visibility="Collapsed">
+                    <StackPanel>
+                        <Grid x:Name="nachos_menu_grid" Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="3" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/martini.jpeg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Real Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like good ingredients"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$12.90"/>
+                            <Button x:Name="add_nachos_button" Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156" Click="add_nachos_button_Click"/>
+                            <Button x:Name="nachos_options_button" Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold" Click="nachos_options_button_Click"/>
+                            <Grid x:Name="nachos_options_grid" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed">
+                                <StackPanel Height ="40" Margin="15, 0, 15, 0" VerticalAlignment="Top" Orientation="Horizontal" >
+                                    <Button x:Name="olive_button" Template="{StaticResource smallRoundButtonTemplate}" Width="50" Height="25" Margin="0,0,2,0" Content="Olives" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold" Click="olive_button_Click"/>
+                                    <Button x:Name="cheese_button" Template="{StaticResource smallRoundButtonTemplate}" Width="90" Height="25" Margin="2,0,2,0" Content="Extra Cheese" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold" Click="cheese_button_Click"/>
+                                    <Button Template="{StaticResource smallRoundButtonTemplate}" Width="80" Height="25" Margin="2,0,2,0" Content="Extra Meat" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold"/>
+                                </StackPanel>
+                                <TextBox Height ="40" Margin="15,0,15,15" VerticalAlignment="Bottom"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Height="100" Margin="0,2,0,2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="#FF464646" RadiusX="20" RadiusY="20"/>
+                            <Image Grid.Row="0" Grid.RowSpan="2" Width="80" Height="60" HorizontalAlignment="Right" Source="/orangejuice.jpg" />
+                            <TextBlock Style="{StaticResource titleStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos"/>
+                            <TextBlock Style="{StaticResource descriptionStyle}" Grid.Row="0" Grid.Column="1" Text="Nachos, they only look like Orange Juice"/>
+                            <TextBlock Style="{StaticResource priceStyle}" Grid.Row="0" Grid.Column="1" Text="$9.90"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,120,0" BorderBrush="{x:Null}" Content="Add to Order" FontFamily="Global User Interface" FontWeight="Bold" Background="#FF8FF156"/>
+                            <Button Template="{StaticResource smallRoundButtonTemplate}" Grid.Row="1" Grid.Column="1" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" BorderBrush="{x:Null}" Content="Options" FontFamily="Global User Interface" FontWeight="Bold"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
-            <Grid x:Name="bill_grid" Margin="10,0,10,10" Grid.Row="1" Grid.Column="2" Background="#FFB6A9A9">
+            
+            <!-- BILL PREVIEW -->
+            <Rectangle x:Name="bill_rectangle" Margin="10,0,10,10" Grid.Row="1" Grid.Column="2" Fill="#FFB6A9A9"/>
+            <Grid x:Name="bill_grid" Margin="10,0,10,10" Grid.Row="1" Grid.Column="2" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="120"/>
                 </Grid.RowDefinitions>
-                <StackPanel x:Name="bill_panel">
-
+                <StackPanel x:Name="bill_panel" Grid.Row="0" Margin="10">
+                    <Grid x:Name="bobs_drink_grid" Height="60" Margin="0,2,0,2" Visibility="Collapsed">
+                        <Rectangle x:Name="bobs_drink_rectangle" Fill="#FFDCC8A0" RadiusX="10" RadiusY="10"/>
+                        <Rectangle Fill="White" Width="200" Height="20" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                        <Rectangle Fill="#FFFBCD53" Width="194" Height="14" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Bob's Drink" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$9.90" FontSize="14" FontFamily="Global User Interface"/>
+                        <Button Template="{StaticResource smallRoundButtonTemplate}" x:Name="bobsDrink_removal_button" Content="X" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0" Background="White" BorderBrush="{x:Null}" Foreground="#FFFF2E00" FontWeight="ExtraBold"/>
+                    </Grid>
+                    <Grid x:Name="amys_drink_grid" Height="60" Margin="0,2,0,2" Visibility="Collapsed">
+                        <Rectangle x:Name="amys_drink_rectangle" Fill="#FFDCC8A0" RadiusX="10" RadiusY="10"/>
+                        <Rectangle Fill="White" Width="200" Height="20" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                        <Rectangle Fill="#FF36E4FF" Width="194" Height="14" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Amy's Drink" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$9.90" FontSize="14" FontFamily="Global User Interface"/>
+                        <Button Template="{StaticResource smallRoundButtonTemplate}" x:Name="amysDrink_removal_button" Content="X" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0" Background="White" BorderBrush="{x:Null}" Foreground="#FFFF2E00" FontWeight="ExtraBold"/>
+                    </Grid>
+                    <Grid x:Name="nachos_grid" Height="80" Margin="0,2,0,2" Visibility="Collapsed">
+                        <Rectangle x:Name="nachos_rectangle" Fill="#FFDCC8A0" RadiusX="10" RadiusY="10" Visibility="Visible"/>
+                        <Rectangle Fill="White" Width="200" Height="20" Margin="0,50,0,0" RadiusX="8" RadiusY="8"/>
+                        <Rectangle Fill="#FF36E4FF" Width="194" Height="14" Margin="0,50,0,0" RadiusX="8" RadiusY="8"/>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Nachos" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$12.90" FontSize="14" FontFamily="Global User Interface"/>
+                        <TextBlock x:Name="nachos_grid_textblock" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,10" Text="olives, extra cheese, 'red onions ins...'" FontSize="12" FontFamily="Global User Interface" FontStyle="Italic"/>
+                        <Button Template="{StaticResource smallRoundButtonTemplate}" x:Name="nacho_removal_button" Content="X" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0" Background="White" BorderBrush="{x:Null}" Foreground="#FFFF2E00" FontWeight="ExtraBold" Click="nacho_removal_button_Click"/>
+                    </Grid>
                 </StackPanel>
+                <TextBlock Text="Total:" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,20,0,0" FontFamily="Global User Interface" FontWeight="Bold" FontSize="24"/>
+                <TextBlock x:Name="totalAmount_textblock" Text="$9.90" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,15,0" FontFamily="Global User Interface" FontWeight="Bold" FontSize="24"/>
+                <Button Template="{StaticResource roundButtonTemplate}" x:Name="checkout_button" Content="Place Order" Width="200" Height="50" Grid.Row="1" VerticalAlignment="Bottom" Margin="0,0,0,10" Background="#FF8FF156" BorderBrush="{x:Null}" Foreground="White" FontSize="20" FontFamily="Global User Interface" Click="checkout_button_Click"/>
             </Grid>
             <Grid x:Name="user_grid" Grid.Row="0" Grid.ColumnSpan="3">
                 <StackPanel x:Name="users_panel" Margin="10, 10, 10, 4" Orientation="Horizontal">
-                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="bob_name_button" Width="100" Content="Bob" Margin="0,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFFBCD53" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="White" MouseDown="bob_name_button_MouseDown"/>
-                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="amy_name_button" Width="100" Content="Amy" Margin="2,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF36E4FF" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Collapsed" BorderBrush="White"/>
-                    <Button Template="{StaticResource addnameButtonTemplate}" x:Name="add_name_button" Width="45" Height="45" Content="+" Margin="2,0,2,0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF8FF156" Foreground="White" FontSize="30" FontWeight="Bold" FontFamily="Global User Interface" MouseDown="add_name_button_MouseDown" BorderBrush="{x:Null}"/>
+                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="bob_name_button" Width="100" Content="Bob" Margin="0,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFFBCD53" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="White" Click="bob_name_button_Click_1"/>
+                    <Button Template="{StaticResource nameButtonTemplate}" x:Name="amy_name_button" Width="100" Content="Amy" Margin="2,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF36E4FF" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Collapsed" BorderBrush="White" Click="amy_name_button_Click"/>
+                    <Button Template="{StaticResource addnameButtonTemplate}" x:Name="add_name_button" Width="45" Height="45" Content="+" Margin="2,0,2,0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF8FF156" Foreground="White" FontSize="30" FontWeight="Bold" FontFamily="Global User Interface" BorderBrush="{x:Null}" Click="add_name_button_Click_1"/>
                 </StackPanel>
             </Grid>
         </Grid>
-        <Grid x:Name="dimming_grid" Width="1024" Background="#B2000000" Visibility="Hidden" MouseDown="idleScreen_grid_MouseDown" IsEnabled="False">
-            <TextBlock Text="please enter your name" Margin="0,300,0,0" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Global User Interface"/>
+        
+        <!-- DIMMING OVERLAY -->
+        <Grid x:Name="dimming_grid" Background="#B2000000" Visibility="Collapsed" IsEnabled="False" MouseDown="dimming_grid_MouseDown">
+            <TextBlock x:Name="name_prompt" Text="please enter your name" Margin="0,300,0,0" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Global User Interface" Visibility="Visible"/>
+            <TextBlock x:Name="pass_prompt" Text="enter passcode" Margin="0,300,0,0" HorizontalAlignment="Center"  VerticalAlignment="Top" Foreground="White" FontSize="20" FontFamily="Global User Interface" Visibility="Collapsed"/>
             <TextBox x:Name="name_textbox" Width="140" Height="30" Margin="442,-35,442,0" FontSize="20" FontFamily="Global User Interface" KeyDown="name_textbox_KeyDown"/>
-            <Image x:Name="keyboard_image" Source="/keyboard.png" VerticalAlignment="Bottom"/>
+            <Image x:Name="keyboard_image" Source="/keyboard.png" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+            <Grid x:Name="placeOrder_grid" Background="#FFCBC9C8" Width="800" Height="600" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="480"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="confirm your order" FontSize="20" FontWeight="Bold" FontFamily="Global User Interface"/>
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,10,10,10">
+                    
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,10,10,10">
+
+                </StackPanel>
+                <Button Template="{StaticResource roundButtonTemplate}" x:Name="previewReturn_button" Grid.Row="2" Grid.Column="0" Width="200" Height="50" Content="Return" Background="#FFA45C5C" BorderBrush="{x:Null}" FontSize="20" FontWeight="Bold" FontFamily="Global User Interface" Foreground="#FF464646"/>
+                <Button Template="{StaticResource roundButtonTemplate}" x:Name="previewConfirm_button" Grid.Row="2" Grid.Column="1" Width="200" Height="50" Content="Confirm" Background="#FF8FF156" BorderBrush="{x:Null}" FontSize="20" FontWeight="Bold" FontFamily="Global User Interface" Foreground="#FF464646"/>
+            </Grid>
+        </Grid>
+        
+        <!-- CHECKOUT SCREEN -->
+        <Grid x:Name="checkout_grid" Background="#FFB6A9A9" Visibility="Collapsed" IsEnabled="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="660"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Width="150" Height="550" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+                <Button Template="{StaticResource nameButtonTemplate}" x:Name="bob" Content="Bob" Height="46" Margin="0,2,0,52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFFBCD53" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="#FFFBCD53" Click="bob_Click"/>
+                <Button Template="{StaticResource nameButtonTemplate}" x:Name="amy" Content="Amy" Height="46" Margin="0,2,0,-52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FF36E4FF" Foreground="White" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="#FF36E4FF"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Width="150" Height="550" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+                <Button Template="{StaticResource roundButtonTemplate}" x:Name="bobsBill" Content="$9.90" Height="46" Margin="0,2,0,52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White" Foreground="#FF464646" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="{x:Null}"/>
+                <Button Template="{StaticResource roundButtonTemplate}" x:Name="amysBill" Content="$22.80"  Height="46" Margin="0,2,0,-52" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White" Foreground="#FF464646" FontSize="16" FontWeight="Bold" FontFamily="Global User Interface" Visibility="Visible" BorderBrush="{x:Null}"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2" Width="230" Height="550" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                <Grid x:Name="bobsDrink" Height="60" Margin="0,2,0,150">
+                    <Rectangle Fill="#FFE7E4DF" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Fill="White" Width="200" Height="20" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                    <Rectangle Fill="#FFFBCD53" Width="194" Height="14" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Bob's Drink" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$9.90" FontSize="14" FontFamily="Global User Interface"/>
+                </Grid>
+                <Grid x:Name="amysDrink" Height="60" Margin="0,2,0,20">
+                    <Rectangle Fill="#FFE7E4DF" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Fill="White" Width="200" Height="20" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                    <Rectangle Fill="#FF36E4FF" Width="194" Height="14" Margin="0,30,0,0" RadiusX="8" RadiusY="8"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Amy's Drink" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$9.90" FontSize="14" FontFamily="Global User Interface"/>
+                </Grid>
+                <Grid x:Name="nachos" Height="80" Margin="0,2,0,-130" MouseDown="nachos_MouseDown">
+                    <Rectangle Fill="#FFE7E4DF" RadiusX="10" RadiusY="10"/>
+                    <Rectangle Fill="White" Width="200" Height="20" Margin="0,50,0,0" RadiusX="8" RadiusY="8"/>
+                    <Rectangle x:Name="nachos_blueline" Fill="#FF36E4FF" Width="194" Height="14" Margin="0,50,0,0" RadiusX="8" RadiusY="8"/>
+                    <Rectangle x:Name="nachos_yellowline" Fill="#FFFBCD53" Width="92" Height="14" Margin="101,50,0,0" RadiusX="8" RadiusY="8" Visibility="Collapsed"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="Nachos" FontSize="14" FontFamily="Global User Interface" FontWeight="SemiBold"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Text="$12.90" FontSize="14" FontFamily="Global User Interface"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,10" Text="extra cheese, 'red onions instead of...'" FontSize="12" FontFamily="Global User Interface" FontStyle="Italic"/>
+                </Grid>
+                
+            </Grid>
+            <Button Template="{StaticResource roundButtonTemplate}" Width="150" Height="50" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,10,0" Content="Return" Background="#FFA45C5C" Foreground="#FF464646" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18"/>
+            <Button Template="{StaticResource roundButtonTemplate}" x:Name="select_all" Width="150" Height="50" Grid.Row="1" Grid.Column="1" Content="Select All" Foreground="#FF464646" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18" Click="select_all_Click"/>
+            <Button Template="{StaticResource roundButtonTemplate}" x:Name="request_bills" Width="230" Height="50" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" Content="Request All Selected Bills" Background="#FF8FF156" Foreground="#FF464646" BorderBrush="{x:Null}" FontFamily="Global User Interface" FontWeight="Bold" FontSize="18" Click="request_bills_Click"/>
         </Grid>
     </Grid>
 </Window>
