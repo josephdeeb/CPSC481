@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nickolaus\\Source\\Repos\\josephdeeb\\CPSC481\\SkipTheWaiterv3.csproj": {}
+    "C:\\Users\\Adeel\\Desktop\\UofC\\Winter 2020\\CPSC 481\\prototype\\CPSC481-prototype\\SkipTheWaiterv3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nickolaus\\Source\\Repos\\josephdeeb\\CPSC481\\SkipTheWaiterv3.csproj": {
+    "C:\\Users\\Adeel\\Desktop\\UofC\\Winter 2020\\CPSC 481\\prototype\\CPSC481-prototype\\SkipTheWaiterv3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nickolaus\\Source\\Repos\\josephdeeb\\CPSC481\\SkipTheWaiterv3.csproj",
+        "projectUniqueName": "C:\\Users\\Adeel\\Desktop\\UofC\\Winter 2020\\CPSC 481\\prototype\\CPSC481-prototype\\SkipTheWaiterv3.csproj",
         "projectName": "SkipTheWaiterv3",
-        "projectPath": "C:\\Users\\Nickolaus\\Source\\Repos\\josephdeeb\\CPSC481\\SkipTheWaiterv3.csproj",
-        "packagesPath": "C:\\Users\\Nickolaus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nickolaus\\Source\\Repos\\josephdeeb\\CPSC481\\obj\\",
+        "projectPath": "C:\\Users\\Adeel\\Desktop\\UofC\\Winter 2020\\CPSC 481\\prototype\\CPSC481-prototype\\SkipTheWaiterv3.csproj",
+        "packagesPath": "C:\\Users\\Adeel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adeel\\Desktop\\UofC\\Winter 2020\\CPSC 481\\prototype\\CPSC481-prototype\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nickolaus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adeel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
